@@ -1,40 +1,35 @@
-import React, { useEffect /* , useState */ } from 'react';
+import React from 'react';
+import useFetch from 'use-http';
 import Movie from './Movie';
 
 import styles from '../styles/MoviesGrid.module.scss';
 
 const MoviesGrid = () => {
-  // const [movies, setMovies] = useState([]);
+  const { loading, error, data = [] } = useFetch('/movies', {}, []);
 
-  useEffect(() => {
-    const getMovies = async () => {
-      const res = await fetch('/movies');
-      const movies = await res.json();
-      // do not set movies twice
-      if (!ignore) {
-        // setMovies(movies);
-      }
-      console.log(movies);
-    };
+  console.log(data);
+  if (error) {
+    return <div className={styles.error}>Error: {error?.name}</div>;
+  }
 
-    let ignore = false;
+  if (loading) {
+    return <div className={styles.loading}>Loading Movies...</div>;
+  }
 
-    getMovies();
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
   return (
-    <div className={styles.movies__container}>
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-    </div>
+    <>
+      {/* {error && 'Error!'} */}
+      {loading && 'Loading...'}
+      <div className={styles.movies__container}>
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+      </div>
+    </>
   );
 };
 
