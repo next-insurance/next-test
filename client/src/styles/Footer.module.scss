@@ -1,15 +1,15 @@
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
     background-color: #231F20;
     padding: 15px;
-    height: 250px;
+    max-height: 250px;
+    margin-top: 30px;
 }
+
 .favicon {
     margin:10px 0;
 }
+
 .contact {
     &__container {
         font: normal normal normal 2.0625rem/2.3125rem Georgia;

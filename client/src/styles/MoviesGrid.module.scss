@@ -1,11 +1,12 @@
 .movies__container {
-    grid-gap: 14px;
     display: flex;
+    grid-gap: 14px;
+    justify-content: center;
     flex-wrap: wrap;
     &>* {
         flex-basis: 260px;
     }
-    padding: 0 140px;
+    padding: 0 120px;
 }
 
 .error {

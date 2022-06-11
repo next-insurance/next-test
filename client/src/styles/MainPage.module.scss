@@ -1,13 +1,10 @@
-$padding: 120px;
 .main__title {
     display: block;
     font: normal normal bold 4rem/3.125rem Arial;
-    padding: $padding;
-    padding-bottom: calc($padding/2);
+    padding: 60px;
     text-transform: uppercase;
 }
 
 .container {
     overflow: auto;
-    max-height: calc(100vh - 250px);
 }
