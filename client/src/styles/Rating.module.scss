@@ -20,3 +20,17 @@
         background-position-y: 2px;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .movie__rating {
+        font: normal normal normal 1.5rem/1.325rem Arial;
+        margin-top: -4px;
+        &.no_rating {
+            font: normal normal normal 0.75rem/0.75rem Arial;
+            opacity: 0.8;
+        }
+        .star { 
+            margin-right: 2px;
+        }
+    }
+}

@@ -2,7 +2,7 @@
     &__background {
         width: 100vw;
         height: 100vh;
-        background-color: rgb(86 86 86 / 76%);
+        background-color: #000000C4;
         position: fixed;
         display: flex;
         justify-content: center;
@@ -49,12 +49,53 @@
             color: #000000;
             text-transform: uppercase;
         }
+
         .duration {
             font: normal normal normal 1.5625rem/1.5625rem Arial;
         }
+
         .description {
+            overflow: auto;
+            height: 100%;
+            max-height: 290px;
             padding-top: 16px;
             font: normal normal normal 1.875rem/1.875rem Georgia;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .modal {
+        &__container {
+            width: 85vw;
+            height: 95vh;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        &__image > img {
+            height: 340px;
+            width: 256px;
+        }
+
+        &__body {
+
+            .main_title {
+                font: normal normal bold 1.875rem/1.9375rem Arial;
+            }
+
+            .duration {
+                font-size: 1.25rem;
+            }
+
+            .description {
+                max-height: 140px;
+                font: normal normal normal 1rem/1.063rem Georgia;
+            }
+
+            .bottom {
+                display: contents;
+            }
         }
     }
 }
