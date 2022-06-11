@@ -4,11 +4,12 @@ import styles from '../styles/Movie.module.scss';
 import Button from './Button';
 import Rating from './Rating';
 
-const Movie = ({ movieId, title, released, rating, image }) => {
+const Movie = ({ movieId, title, released, rating, image, onMovieClick }) => {
   const generatMovieTitle = () => title + (released ? ` (${released})` : '');
 
   const handleReadMore = (id) => {
     console.log('id', id);
+    onMovieClick(id);
   };
 
   return (
@@ -18,9 +19,6 @@ const Movie = ({ movieId, title, released, rating, image }) => {
         {generatMovieTitle()}
       </label>
       <Rating rating={rating} />
-      {/* <button className={styles.show_more} onClick={() => handleReadMore(movieId)}>
-        Read more
-      </button> */}
       <Button text="Read More" clickHandler={() => handleReadMore(movieId)} />
     </div>
   );
