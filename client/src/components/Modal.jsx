@@ -22,13 +22,7 @@ function Modal({ setOpenModal, data }) {
             <p className={styles.description} dangerouslySetInnerHTML={{ __html: `${synopsis}` }} />
           </div>
           <div className={styles.bottom}>
-            <Button
-              text="Back to list"
-              reverseOrder
-              clickHandler={() => {
-                setOpenModal(null);
-              }}
-            />
+            <Button text="Back to list" reverseOrder clickHandler={setOpenModal} />
           </div>
         </div>
       </div>

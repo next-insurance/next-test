@@ -7,7 +7,6 @@ import Modal from './Modal';
 
 const MoviesGrid = () => {
   const [movies, setMovies] = useState([]);
-  // const [modalOpen, setModalOpen] = useState(false);
   const [movieData, setMovieData] = useState(false);
   const { get, response, loading, error } = useFetch();
 
@@ -18,7 +17,6 @@ const MoviesGrid = () => {
   async function loadMovies() {
     try {
       const moviesData = await get('/movies');
-      console.log('movieData', moviesData);
       if (response.ok) {
         setMovies(moviesData);
       }
@@ -29,7 +27,6 @@ const MoviesGrid = () => {
 
   async function showMovieInfo(movieId) {
     const data = await get(`/movies/${movieId}`);
-    console.log('movieData', data);
     if (response.ok) {
       setMovieData(data[0]);
     }
@@ -45,7 +42,7 @@ const MoviesGrid = () => {
 
   return (
     <>
-      {movieData && <Modal setOpenModal={setMovieData} data={movieData} />}
+      {movieData && <Modal setOpenModal={() => setMovieData(null)} data={movieData} />}
       <div className={styles.movies__container}>
         {movies.map((movie) => (
           <Movie
