@@ -8,6 +8,11 @@ function prettifyDuration(duration) {
     return;
   }
   const durations = duration.split('h');
+  // edge cased such as no h; or just h without minutes
+  if (durations.length === 1 || durations[1] === '') {
+    return duration;
+  }
+
   durations[1] = durations[1] + 'in';
   return durations.join('h ');
 }
