@@ -1,0 +1,36 @@
+.button {
+    min-width: 250px;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+    background: transparent;
+    text-align: initial;
+    border: 1px solid #000000;
+    padding: 10px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+
+    &::after {
+        content: '';
+        width: 25px;
+        height: 16px;
+        display: inline-block;
+        position: relative;
+        left: 52%;
+        margin-top: -1px;
+        vertical-align: middle;
+        background-image: url("../assets/arrow.svg");
+        background-repeat: no-repeat;
+        background-position-y: 2px;
+    }
+
+    &.reverse_direction {
+        flex-direction: row-reverse;
+        &::after {
+            margin-top: 1px;
+            left: unset;
+            right: 50%;
+            transform: rotate(180deg);
+        }
+    }
+}

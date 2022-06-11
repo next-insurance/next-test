@@ -1,0 +1,22 @@
+.movie__rating {
+    font: normal normal normal 1.5625rem/1.9375rem Arial;
+    text-align: start;
+    padding-bottom: 16px;
+
+    &.no_rating {
+        font: normal normal normal 1.325rem/1.75rem Arial;
+        opacity: 0.8;
+    }
+
+    .star {
+        background-image: url("../assets/star.svg");
+        background-repeat: no-repeat;
+        background-size: 25px;
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        margin: 0;
+        margin-right: 10px;
+        background-position-y: 2px;
+    }
+}

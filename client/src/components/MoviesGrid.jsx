@@ -3,9 +3,11 @@ import useFetch from 'use-http';
 import Movie from './Movie';
 
 import styles from '../styles/MoviesGrid.module.scss';
+import Modal from './Modal';
 
 const MoviesGrid = () => {
   const [movies, setMovies] = useState([]);
+  const [movieData, setMovieData] = useState(false);
   const { get, response, loading, error } = useFetch();
 
   useEffect(() => {
@@ -14,13 +16,19 @@ const MoviesGrid = () => {
 
   async function loadMovies() {
     try {
-      const movieData = await get('/movies');
-      console.log('movieData', movieData);
+      const moviesData = await get('/movies');
       if (response.ok) {
-        setMovies(movieData);
+        setMovies(moviesData);
       }
     } catch (error) {
       console.error(error);
+    }
+  }
+
+  async function showMovieInfo(movieId) {
+    const data = await get(`/movies/${movieId}`);
+    if (response.ok) {
+      setMovieData(data[0]);
     }
   }
 
@@ -28,12 +36,13 @@ const MoviesGrid = () => {
     return <div className={styles.error}>Error: {error?.name}</div>;
   }
 
-  if (loading) {
+  if (loading && movies.length === 0) {
     return <div className={styles.loading}>Loading Movies...</div>;
   }
 
   return (
     <>
+      {movieData && <Modal setOpenModal={() => setMovieData(null)} data={movieData} />}
       <div className={styles.movies__container}>
         {movies.map((movie) => (
           <Movie
@@ -43,6 +52,7 @@ const MoviesGrid = () => {
             released={movie.released}
             rating={movie.rating}
             image={movie.image}
+            onMovieClick={showMovieInfo}
           />
         ))}
       </div>

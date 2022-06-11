@@ -1,12 +1,15 @@
 import React from 'react';
 
 import styles from '../styles/Movie.module.scss';
+import Button from './Button';
+import Rating from './Rating';
 
-const Movie = ({ movieId, title, released, rating, image }) => {
+const Movie = ({ movieId, title, released, rating, image, onMovieClick }) => {
   const generatMovieTitle = () => title + (released ? ` (${released})` : '');
 
   const handleReadMore = (id) => {
     console.log('id', id);
+    onMovieClick(id);
   };
 
   return (
@@ -15,13 +18,8 @@ const Movie = ({ movieId, title, released, rating, image }) => {
       <label className={styles.movie__title} title={generatMovieTitle()}>
         {generatMovieTitle()}
       </label>
-      <label className={`${styles.movie__rating} ${rating ? '' : styles.no_rating}`}>
-        <i className={styles.star} />
-        {rating ? rating : 'No Rating Available'}
-      </label>
-      <button className={styles.show_more} onClick={() => handleReadMore(movieId)}>
-        Read more
-      </button>
+      <Rating rating={rating} />
+      <Button text="Read More" clickHandler={() => handleReadMore(movieId)} />
     </div>
   );
 };
