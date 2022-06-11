@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/Modal.module.scss';
+import Button from './Button';
 import Rating from './Rating';
 
 function Modal(/* { setOpenModal } */) {
@@ -26,9 +27,16 @@ function Modal(/* { setOpenModal } */) {
             </p>
           </div>
           <div className={styles.bottom}>
-            <button type="button" className={styles.close_btn}>
+            {/* <button type="button" className={styles.close_btn}>
               Back to list
-            </button>
+            </button> */}
+            <Button
+              text="Back to list"
+              reverseOrder
+              clickHandler={() => {
+                console.log('close');
+              }}
+            />
           </div>
         </div>
       </div>
