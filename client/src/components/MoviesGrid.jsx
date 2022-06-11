@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useFetch from 'use-http';
 import Movie from './Movie';
 
 import styles from '../styles/MoviesGrid.module.scss';
 
 const MoviesGrid = () => {
-  const { loading, error, data = [] } = useFetch('/movies', {}, []);
+  const [movies, setMovies] = useState([]);
+  const { get, response, loading, error } = useFetch();
 
-  console.log(data);
+  useEffect(() => {
+    loadMovies();
+  }, []);
+
+  async function loadMovies() {
+    try {
+      const movieData = await get('/movies');
+      console.log('movieData', movieData);
+      if (response.ok) {
+        setMovies(movieData);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   if (error) {
     return <div className={styles.error}>Error: {error?.name}</div>;
   }
@@ -18,16 +34,17 @@ const MoviesGrid = () => {
 
   return (
     <>
-      {/* {error && 'Error!'} */}
-      {loading && 'Loading...'}
       <div className={styles.movies__container}>
-        <Movie />
-        <Movie />
-        <Movie />
-        <Movie />
-        <Movie />
-        <Movie />
-        <Movie />
+        {movies.map((movie) => (
+          <Movie
+            key={movie.id}
+            movieId={movie.id}
+            title={movie.title}
+            released={movie.released}
+            rating={movie.rating}
+            image={movie.image}
+          />
+        ))}
       </div>
     </>
   );
