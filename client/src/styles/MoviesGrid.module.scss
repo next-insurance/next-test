@@ -1,0 +1,21 @@
+.movies__container {
+    display: flex;
+    grid-gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    &>* {
+        flex-basis: 260px;
+    }
+    padding: 0 120px;
+}
+
+.error {
+    color: #ff3333ab;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.loading {
+    color: #1372638a;
+    font-size: 2rem;
+}
+
