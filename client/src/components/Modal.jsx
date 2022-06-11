@@ -3,7 +3,16 @@ import styles from '../styles/Modal.module.scss';
 import Button from './Button';
 import Rating from './Rating';
 
-function Modal({ setOpenModal, data }) {
+function prettifyDuration(duration) {
+  if (!duration) {
+    return;
+  }
+  const durations = duration.split('h');
+  durations[1] = durations[1] + 'in';
+  return durations.join('h ');
+}
+
+const Modal = ({ setOpenModal, data }) => {
   const { largeimage, title, synopsis, runtime, rating } = data;
   return (
     <div className={styles.modal__background}>
@@ -14,7 +23,7 @@ function Modal({ setOpenModal, data }) {
         <div className={styles.modal__body}>
           <div className={styles.top}>
             <div className={styles.main_title}>{title}</div>
-            <div className={styles.duration}>{runtime}</div>
+            <div className={styles.duration}>{prettifyDuration(runtime)}</div>
             <Rating rating={rating ? `${rating}/10` : null} />
             {/* this dangerouslySetInnerHTML is used to decode the html entity that returns from the api.
                 I use it because I trust that this text is not coming from the user input, but from the server
@@ -28,6 +37,6 @@ function Modal({ setOpenModal, data }) {
       </div>
     </div>
   );
-}
+};
 
 export default Modal;
