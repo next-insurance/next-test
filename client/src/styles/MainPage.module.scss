@@ -8,3 +8,10 @@
 .container {
     overflow: auto;
 }
+
+@media only screen and (max-width: 600px) {
+    .main__title {
+        font: normal normal bold 27px/25px Arial;
+        padding: 30px 25px;
+    }
+}
