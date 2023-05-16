@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  title: test-improves5
+  name: sns-test-improves5-dev
+  description: "SNS queue of component:default/example-website service, environment: dev"
+  tags:
+    - type-sns
+    #- service-component:default/example-website
+    - owner-group:default/guests
+    - environment-dev
+spec:
+  type: sns
+  owner: group:default/guests
+  dependencyOf:
+    - component:default/component:default/example-website
