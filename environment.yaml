@@ -1,36 +1,36 @@
-      title: Service, Environment and Owner
-      required:
-      - owner
-      - service_name
-      - environment
-      properties:
-      owner:
-        title: Owner
-        type: string
-        description: Owner of the new queue
-        ui:field: EntityPicker
-        ui:autofocus: true
-        ui:options:
-          allowArbitraryValues: false
-          defaultKind: Group
-          allowedKinds:
-            - Group
-      service_name:
-        title: Service Name
-        type: string
-        description: To which service in Skyscraper this sns belongs to
-        ui:field: EntityPicker
-        ui:options:
-          allowArbitraryValues: false
-          defaultKind: Component
-          allowedKinds:
-            - Component
-      environment:
-        title: Environment
-        type: string
-        description: Environment type
-        enum:
-          - dev
-          - stg
-          - prod
-          - shared-services
+title: Service, Environment and Owner
+required:
+- owner
+- service_name
+- environment
+properties:
+owner:
+  title: Owner
+  type: string
+  description: Owner of the new queue
+  ui:field: EntityPicker
+  ui:autofocus: true
+  ui:options:
+    allowArbitraryValues: false
+    defaultKind: Group
+    allowedKinds:
+      - Group
+service_name:
+  title: Service Name
+  type: string
+  description: To which service in Skyscraper this sns belongs to
+  ui:field: EntityPicker
+  ui:options:
+    allowArbitraryValues: false
+    defaultKind: Component
+    allowedKinds:
+      - Component
+environment:
+  title: Environment
+  type: string
+  description: Environment type
+  enum:
+    - dev
+    - stg
+    - prod
+    - shared-services
