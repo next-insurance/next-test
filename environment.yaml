@@ -34,3 +34,9 @@ properties:
       - stg
       - prod
       - shared-services
+    enumNames:
+      - Development
+      - Staging
+      - Production
+      - Shared Services
+    ui:field: EnumPicker
