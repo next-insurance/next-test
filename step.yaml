@@ -1,0 +1,13 @@
+- id: template
+  name: Fetch Resource Skeleton + Template
+  action: fetch:template
+  input:
+    url: ./skeleton
+    values:
+      topic_name: ${{ parameters.topic_name }}
+      is_fifo: ${{ parameters.is_fifo }}
+      subscribers: ${{ parameters.subscribers }}
+      delivery_policy: ""
+      owner: ${{ parameters.owner }}
+      service_name: ${{ parameters.service_name }}
+      environment: ${{ parameters.environment }}
