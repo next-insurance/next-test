@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  title: test-sns-on-backstag
+  name: sns-test-sns-on-backstag-eng-dev
+  description: "SNS queue of ivans service, environment: eng-dev"
+  tags:
+    - type-sns
+    - service-ivans
+    - owner-devops-team
+    - environment-eng-dev
+spec:
+  type: sns
+  owner: devops-team
+  dependencyOf:
+    - component:default/ivans

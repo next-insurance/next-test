@@ -1,0 +1,19 @@
+topic_name: test-sns-on-backstag.fifo
+is_fifo: true
+subscribers:
+  - protocol: sqs
+    endpoint: "arn:aws:sqs:::sqs-certificate-affecting-changes-dev"
+    raw_message_delivery: true
+    filter_policy: '{ "replaced_event_action": ["replaced_value1", "replaced_value2"] }'
+  - protocol: sqs
+    endpoint: "arn:aws:sqs:::business-identity-events-dev"
+    raw_message_delivery: true
+    filter_policy: ""
+delivery_policy: ""
+tags:
+  owner: devops-team
+  team: 
+environment_name: eng-dev
+account_name: 
+account_id: 
+region: 
