@@ -1,0 +1,9 @@
+
+{%- for account in values.accounts %}
+    {%- if account.name == "eng-dev-01" %}
+    {
+        "account_name": "${{ account.name }}",
+        "account_id": "${{ account.account_id }}"
+    }
+    {%- endif %}
+{%- endfor %}
